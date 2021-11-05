@@ -48,9 +48,9 @@ afterEvaluate {
             release (MavenPublication){
                 from components.release
 
-                groupId = 'com.github.Mallik408'
-                artifactId = 'lib-sample-app'
-                version = '1.0.1'
+                groupId = 'com.github.mallikarjun408'
+                artifactId = 'TestSampleLib'
+                version = '1.0.2'
             }
         }
     }
