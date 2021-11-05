@@ -10,6 +10,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import com.example.myapplication.DialogActivity
 import com.example.myapplication.LibAcitivity
 import com.example.test.databinding.ActivityMainBinding
 
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity() {
            // Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
           //      .setAction("Action", null).show()
 
-            val intent = Intent(this, LibAcitivity::class.java)
+            val intent = Intent(this, DialogActivity::class.java)
             startActivity(intent)
         }
     }
