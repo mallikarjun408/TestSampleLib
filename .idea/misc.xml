@@ -4,8 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Work/COOP/workspace/Test/myapplication/src/main/res/layout/activity_main.xml" value="0.10625" />
+        <entry key="..\:/Work/COOP/workspace/TestSampleLib/app/src/main/res/layout/activity_main.xml" value="0.16032608695652173" />
+        <entry key="..\:/Work/COOP/workspace/TestSampleLib/app/src/main/res/layout/content_main.xml" value="0.16032608695652173" />
+        <entry key="..\:/Work/COOP/workspace/TestSampleLib/app/src/main/res/layout/fragment_first.xml" value="0.1" />
         <entry key="..\:/Work/COOP/workspace/TestSampleLib/myapplication/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.19166666666666668" />
         <entry key="..\:/Work/COOP/workspace/TestSampleLib/myapplication/src/main/res/layout/card_activation_completed.xml" value="0.16032608695652173" />
+        <entry key="..\:/Work/COOP/workspace/TestSampleLib/myapplication/src/main/res/layout/cardlayout.xml" value="0.16032608695652173" />
+        <entry key="..\:/Work/COOP/workspace/TestSampleLib/myapplication/src/main/res/layout/enterpin_fragment.xml" value="0.1" />
       </map>
     </option>
   </component>

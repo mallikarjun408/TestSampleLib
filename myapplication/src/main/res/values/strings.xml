@@ -3,5 +3,7 @@
 
     <string name="enter_your_cardNumber">Enter your primary account number to activate card</string>
     <string name="card_activate">activate</string>
+    <string name="card_activate_go">Card Activate</string>
+    <string name="pinchange">Pin Change</string>
     <string name="card_activate_success">The card has been successfully activated </string>
 </resources>
