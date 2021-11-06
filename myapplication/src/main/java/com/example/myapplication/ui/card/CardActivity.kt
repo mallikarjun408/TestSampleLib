@@ -23,7 +23,8 @@ class CardActivity : AppCompatActivity() {
 
         val toolbar = binding.toolbar
         setSupportActionBar(toolbar)
-        toolbar.title = "Card Screen"
+        toolbar.title = ""
+
 
         val enterPinToActivateFragment = EnterPinToActivateFragment()
 
