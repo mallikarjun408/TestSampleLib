@@ -1,5 +1,6 @@
 package com.example.myapplication.ui.card
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
@@ -39,5 +40,11 @@ class CardActivity : AppCompatActivity() {
 
         // Finishing the transition
         transaction.commit()
+
+        val txtClose = binding.txtClose
+
+        txtClose.setOnClickListener{
+            finish()
+        }
     }
 }

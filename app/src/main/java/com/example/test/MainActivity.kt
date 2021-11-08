@@ -1,8 +1,12 @@
 package com.example.test
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
+import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.ui.card.CardActivity
 import com.example.test.databinding.ActivityMainBinding
@@ -24,6 +28,26 @@ class MainActivity : AppCompatActivity() {
         btnCardActivate.setOnClickListener {
             val intent = Intent(this, CardActivity::class.java)
             startActivity(intent)
+
+
+          /*  val startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+            { result: ActivityResult ->
+                if (result.resultCode == Activity.RESULT_OK) {
+                    //  you will get result here in result.data
+                    Toast.makeText(this,"success", Toast.LENGTH_LONG).show()
+                }
+
+            }
+            startForResult.launch(Intent(this, CardActivity::class.java))
+*/
+
         }
+
+
+
     }
+
+
+
+
 }

@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingHorizontal="10dp">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -24,6 +25,9 @@
         android:layout_marginTop="100dp"
         android:text="@string/card_activate_success"
         android:textColor="@color/black"
+        android:textSize="15dp"
+        android:textAlignment="center"
+        android:paddingHorizontal="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
@@ -35,7 +39,9 @@
         android:layout_marginTop="100dp"
         android:paddingHorizontal="20dp"
         android:paddingVertical="10dp"
+        android:layout_marginBottom="50dp"
         android:text="Close"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
