@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         btnCardActivate.setOnClickListener {
             val clientData = ClientData()
-            clientData.setName("Chase")
+            clientData.setName("Card Activation")
             clientData.setHeader("xxxx")
 
             val bundle = Bundle()

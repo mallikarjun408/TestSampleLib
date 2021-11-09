@@ -9,4 +9,10 @@
     <color name="white">#FFFFFFFF</color>
     <color name="colorPrimary">#FFFFFFFF</color>
     <color name="colorSnowWhite">#F8F8FF</color>
+    <color name="colorBlack6">#151E22</color>
+    <color name="gray2">#F4F6F6</color>
+    <color name="gray3">#D4D9DB</color>
+    <color name="gray4">#5E6B72</color>
+
+
 </resources>
