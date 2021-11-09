@@ -47,11 +47,11 @@
 
             <TextView
                 android:id="@+id/txtClose"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:paddingRight="20dp"
                 android:background="@drawable/close"
-                android:textSize="20dp"
+
                 android:layout_margin="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
