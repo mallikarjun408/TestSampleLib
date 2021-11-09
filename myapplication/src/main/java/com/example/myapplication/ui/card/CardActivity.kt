@@ -6,6 +6,7 @@ import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.R
+import com.example.myapplication.cardactivation.data.ClientData
 import com.example.myapplication.databinding.CardlayoutBinding
 import com.example.myapplication.databinding.EnterpinFragmentBinding
 
@@ -25,6 +26,15 @@ class CardActivity : AppCompatActivity() {
         val toolbar = binding.toolbar
         setSupportActionBar(toolbar)
         toolbar.title = ""
+
+        val txtHeader = binding.txtHeader
+
+
+        val client_data = intent.getSerializableExtra("client_data") as ClientData?
+        txtHeader.setText(client_data?.getName())
+
+        val brandName: String? = intent.getStringExtra("brandName")
+
 
 
         val enterPinToActivateFragment = EnterPinToActivateFragment()

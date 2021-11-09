@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.cardactivation.data.ClientData
 import com.example.myapplication.ui.card.CardActivity
 import com.example.test.databinding.ActivityMainBinding
 
@@ -26,7 +27,15 @@ class MainActivity : AppCompatActivity() {
         val btnPinChange = binding.buttonSecond
 
         btnCardActivate.setOnClickListener {
+            val clientData = ClientData()
+            clientData.setName("Chase")
+            clientData.setHeader("xxxx")
+
+            val bundle = Bundle()
+            bundle.putSerializable("client_data", clientData)
             val intent = Intent(this, CardActivity::class.java)
+            intent.putExtra("brandName","Chase")
+            intent.putExtras(bundle)
             startActivity(intent)
 
 
