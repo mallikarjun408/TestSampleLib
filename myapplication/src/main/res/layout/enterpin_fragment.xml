@@ -56,6 +56,7 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:inputType="phone"
+        android:nextFocusDown="@+id/edt_two"
         android:background="@drawable/edtbackground"
         app:layout_constraintEnd_toStartOf="@+id/edt_two"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,9 +75,11 @@
         android:textColor="@color/black"
         android:textAlignment="center"
         android:inputType="phone"
+        android:nextFocusForward="@+id/edt_three"
         android:background="@drawable/edtbackground"
         app:layout_constraintEnd_toStartOf="@+id/txtCenterView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        />
 
     <EditText
         android:id="@+id/edt_three"
@@ -88,6 +91,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:textSize="15dp"
+        android:nextFocusForward="@+id/edt_four"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:inputType="phone"
@@ -125,6 +129,7 @@
         android:text="@string/card_activate"
         android:textColor="@color/gray4"
         android:textSize="17dp"
+        android:enabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

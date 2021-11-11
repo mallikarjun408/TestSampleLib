@@ -14,6 +14,7 @@
     <color name="gray3">#D4D9DB</color>
     <color name="gray4">#5E6B72</color>
     <color name="blue">#2979FF</color>
-
+    //sceen1
+<color name="headercolor">#FFFFFF</color>
 
 </resources>

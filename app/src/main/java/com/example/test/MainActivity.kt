@@ -37,26 +37,6 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("brandName","Chase")
             intent.putExtras(bundle)
             startActivity(intent)
-
-
-          /*  val startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult())
-            { result: ActivityResult ->
-                if (result.resultCode == Activity.RESULT_OK) {
-                    //  you will get result here in result.data
-                    Toast.makeText(this,"success", Toast.LENGTH_LONG).show()
-                }
-
-            }
-            startForResult.launch(Intent(this, CardActivity::class.java))
-*/
-
         }
-
-
-
     }
-
-
-
-
 }
