@@ -1,9 +1,18 @@
 package com.example.myapplication.cardactivation.network
 
-import retrofit2.http.GET
+import com.example.myapplication.cardactivation.model.CardActivationModel
+import okhttp3.RequestBody
+import retrofit2.Call
+import retrofit2.http.*
 
 
 interface RestApiService {
    /* @get:GET("bQsLPRKKMi?indent=2")
     val userList: Call<UserWrapper?>? */
+
+    @PUT
+    fun cardActivationAPI(@Url api: String, @HeaderMap header: Map<String, String>, @Body body: RequestBody): Call<CardActivationModel>
+
+
+
 }

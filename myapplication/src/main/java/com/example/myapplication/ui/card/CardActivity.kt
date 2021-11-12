@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.R
 import com.example.myapplication.cardactivation.data.ClientData
+import com.example.myapplication.cardactivation.viewmodel.CardActivationViewModel
 import com.example.myapplication.databinding.CardlayoutBinding
 import com.example.myapplication.databinding.EnterpinFragmentBinding
 
@@ -23,9 +25,14 @@ class CardActivity : AppCompatActivity() {
         binding = CardlayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val mViewModel: CardActivationViewModel = ViewModelProvider(this).get(
+            CardActivationViewModel::class.java
+        )
+
         val toolbar = binding.toolbar
         setSupportActionBar(toolbar)
         toolbar.title = ""
+
 
         val txtHeader = binding.txtHeader
 
@@ -33,8 +40,7 @@ class CardActivity : AppCompatActivity() {
         val client_data = intent.getSerializableExtra("client_data") as ClientData?
         txtHeader.setText(client_data?.getName())
 
-        val brandName: String? = intent.getStringExtra("brandName")
-
+        mViewModel.clientUrl = client_data?.getClientUrl().toString()
 
 
         val enterPinToActivateFragment = EnterPinToActivateFragment()

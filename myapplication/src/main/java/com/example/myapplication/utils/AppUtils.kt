@@ -22,5 +22,10 @@ object  AppUtils {
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
+    public fun isAccountNumberValid(accNum: String): Boolean {
+      val accNumPattern = "^\\d{16}\$"
+        return accNum.matches(accNumPattern.toRegex())
+    }
+
 
 }
