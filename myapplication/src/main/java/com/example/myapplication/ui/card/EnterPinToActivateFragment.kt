@@ -117,6 +117,7 @@ class EnterPinToActivateFragment: Fragment(){
                     val inputMethodManager =
                         activity?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
                     inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+                    btnActivate.isEnabled = true
                 }
             }
         })

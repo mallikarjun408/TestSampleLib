@@ -28,6 +28,8 @@
         app:layout_constraintStart_toStartOf="parent"
         android:textAlignment="center"
         android:textSize="15dp"
+        android:fontFamily="@font/font_regular"
+        android:textStyle="italic"
         android:layout_marginHorizontal="20dp"
         android:textColor="@color/colorBlack6"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -52,6 +54,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:textSize="15dp"
+        android:fontFamily="@font/font_regular"
         android:layout_marginRight="10dp"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -72,6 +75,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:textSize="15dp"
+        android:fontFamily="@font/font_regular"
         android:textColor="@color/black"
         android:textAlignment="center"
         android:inputType="phone"
@@ -91,6 +95,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:textSize="15dp"
+        android:fontFamily="@font/font_regular"
         android:nextFocusForward="@+id/edt_four"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -109,6 +114,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:textSize="15dp"
+        android:fontFamily="@font/font_regular"
         android:layout_marginLeft="10dp"
         android:textColor="@color/black"
         android:inputType="phone"
@@ -127,15 +133,16 @@
         android:paddingHorizontal="20dp"
         android:paddingVertical="10dp"
         android:text="@string/card_activate"
-        android:textColor="@color/gray4"
+        android:textColor="@color/enable_disable_text"
         android:textSize="17dp"
-        android:enabled="true"
+        android:fontFamily="@font/font_regular"
+        android:enabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_two"
         app:layout_constraintVertical_bias="0.0"
-        android:background="@color/gray3"/>
+        android:background="@drawable/enable_disable_btn"/>
 
 
 
