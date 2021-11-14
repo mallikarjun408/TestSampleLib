@@ -2,10 +2,12 @@ package com.example.myapplication.cardactivation.model
 
 import com.google.gson.annotations.SerializedName
 
-
-
-
 class CardActivationModel {
+
+   /* @SerializedName("coord")
+    var coord: String? = null
+    @SerializedName("sys")
+    var sys: String? = null*/
 
     /*
     * {

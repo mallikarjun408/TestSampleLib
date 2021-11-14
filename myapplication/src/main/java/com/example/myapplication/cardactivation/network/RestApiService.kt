@@ -2,6 +2,7 @@ package com.example.myapplication.cardactivation.network
 
 import com.example.myapplication.cardactivation.model.CardActivationModel
 import okhttp3.RequestBody
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -11,7 +12,7 @@ interface RestApiService {
     val userList: Call<UserWrapper?>? */
 
     @PUT
-    fun cardActivationAPI(@Url api: String, @HeaderMap header: Map<String, String>, @Body body: RequestBody): Call<CardActivationModel>
+    fun cardActivationAPI(@Url api: String, @HeaderMap header: Map<String, String>, @Body body: JSONObject): Call<CardActivationModel>
 
 
 
