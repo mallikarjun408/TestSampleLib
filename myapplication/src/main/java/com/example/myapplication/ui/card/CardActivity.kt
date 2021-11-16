@@ -37,11 +37,17 @@ class CardActivity : AppCompatActivity() {
         val txtHeader = binding.txtHeader
 
 
-        val client_data = intent.getSerializableExtra("client_data") as ClientData?
-        txtHeader.setText(client_data?.getName())
+        val intentData = intent.getSerializableExtra("client_data") as ClientData?
+        txtHeader.setText(intentData?.getName())
 
-        mViewModel.clientUrl = client_data?.getClientUrl().toString()
+        /*mViewModel.clientUrl = client_data?.getClientUrl().toString()
+        mViewModel.clientId = client_data?.getClientId().toString()
+        mViewModel.clientSecret = client_data?.getClientSecret().toString()*/
 
+        val clientData = ClientData()
+        clientData.setClientUrl(intentData?.getClientUrl().toString())
+        clientData.setClientId(intentData?.getClientId().toString())
+        clientData.setClientSecret(intentData?.getClientSecret().toString())
 
         val enterPinToActivateFragment = EnterPinToActivateFragment()
 

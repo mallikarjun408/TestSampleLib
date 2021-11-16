@@ -11,8 +11,8 @@ interface RestApiService {
    /* @get:GET("bQsLPRKKMi?indent=2")
     val userList: Call<UserWrapper?>? */
 
-    @PUT
-    fun cardActivationAPI(@Url api: String, @HeaderMap header: Map<String, String>, @Body body: JSONObject): Call<CardActivationModel>
+    @PUT("card-activation")
+    fun cardActivationAPI(@HeaderMap header: Map<String,String>, @Body body: JSONObject): Call<CardActivationModel>
 
 
 

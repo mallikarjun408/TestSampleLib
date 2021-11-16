@@ -34,6 +34,8 @@ class MainActivity : AppCompatActivity() {
             clientData.setName("Card Activation")
             clientData.setHeader("xxxx")
             clientData.setClientUrl("https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/902a620f-1bc1-4977-8c8d-933022d52108/card-activation-api/2.0.16/m/omaha/card-activation")
+            clientData.setClientId(getText(R.string.client_id).toString())
+            clientData.setClientSecret(getText(R.string.client_secret).toString())
 
             val bundle = Bundle()
             bundle.putSerializable("client_data", clientData)

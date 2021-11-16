@@ -74,7 +74,7 @@ class EnterPinToActivateFragment: Fragment(){
 
 
 
-
+/*
             val cardActivatedFragment = CardActivatedFragment()
             // Begin the fragment transition using support fragment manager
             val transaction = manager?.beginTransaction()
@@ -84,7 +84,9 @@ class EnterPinToActivateFragment: Fragment(){
             transaction?.addToBackStack(null)
 
             // Finishing the transition
-            transaction?.commit()
+            transaction?.commit() */
+
+
         }
 
         edt1.addTextChangedListener(object : TextWatcher {
@@ -162,6 +164,7 @@ class EnterPinToActivateFragment: Fragment(){
             if(isAccNumberValid){
                 txtAccNumMsg.text = getString(R.string.accnum_valid_success)
                 txtAccNumMsg.setTextColor(getColor(txtAccNumMsg.context,R.color.card_number_valid_color))
+                mViewModel.activateCard()
             }else{
                 txtAccNumMsg.text = getString(R.string.accnum_invalid_error)
                 txtAccNumMsg.setTextColor(getColor(txtAccNumMsg.context,R.color.card_number_invalid_color))

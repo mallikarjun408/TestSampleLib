@@ -1,8 +1,10 @@
 package com.example.myapplication.cardactivation.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.myapplication.cardactivation.data.ClientData
 import com.example.myapplication.cardactivation.model.CardActivationModel
 import com.example.myapplication.cardactivation.network.RestApiService
 import com.example.myapplication.cardactivation.network.RetrofitInstance.apiService
@@ -22,8 +24,12 @@ class CardActivationViewModel: ViewModel(){
     private val TAG: String = CardActivationViewModel::class.java.getSimpleName()
 
     var clientUrl: String = ""
+    var clientId: String =""
+    var clientSecret: String = ""
+
     val accNumberValidate = MutableLiveData<Boolean>()
     var accNumber: String =""
+
 
 
     fun validateAccountNumber(edt1: String,edt2: String, edt3: String,edt4: String) {
@@ -38,34 +44,32 @@ class CardActivationViewModel: ViewModel(){
 
         val header = HashMap<String, String>()
 
-        header["client_id"] = ""
-        header["Content_Type"] = "application/json"
+
+        header["Content-Type"] = "application/json"
         header["Accept"] = "*/*"
-        header["client_secret"] = "269d98e4922fb3895e9ae2108cbb5064"
-        header["client_id"] = "269d98e4922fb3895e9ae2108cbb5064"
+        header["client_secret"] = clientSecret
+        header["client_id"] = clientId
+
+
 
 
         val jsonObj = JSONObject()
-        jsonObj.put("accountNumber",accNumber)
+        jsonObj.put("accountNumber","4111111111111111")
         jsonObj.put("action","activate")
+        jsonObj.put("dateLastMaintained","2019-04-04:11:25:31.940000")
 
-        val body: RequestBody = RequestBody.create(
-            MediaType.parse("application/json; charset=utf-8"),
-           jsonObj.toString()
-        )
-
-        //  val body: RequestBody = RequestBody.create(JSONStringer, jsonObj.toString())
-        val cardActivationAPI = apiService.cardActivationAPI(clientUrl, header, jsonObj)
+        val cardActivationAPI = apiService.cardActivationAPI( header, jsonObj)
         cardActivationAPI.enqueue(object :Callback<CardActivationModel>{
             override fun onResponse(
                 call: Call<CardActivationModel>,
                 response: Response<CardActivationModel>
             ) {
-                TODO("Not yet implemented")
+
+                Log.i("response cardActivation",response.message().toString())
             }
 
             override fun onFailure(call: Call<CardActivationModel>, t: Throwable) {
-                TODO("Not yet implemented")
+               Log.i(TAG,"Throwable")
             }
 
         })
