@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.R
 import com.example.myapplication.cardactivation.data.ClientData
+import com.example.myapplication.cardactivation.data.MySingleton
 import com.example.myapplication.cardactivation.viewmodel.CardActivationViewModel
 import com.example.myapplication.databinding.CardlayoutBinding
 import com.example.myapplication.databinding.EnterpinFragmentBinding
@@ -40,14 +41,9 @@ class CardActivity : AppCompatActivity() {
         val intentData = intent.getSerializableExtra("client_data") as ClientData?
         txtHeader.setText(intentData?.getName())
 
-        /*mViewModel.clientUrl = client_data?.getClientUrl().toString()
-        mViewModel.clientId = client_data?.getClientId().toString()
-        mViewModel.clientSecret = client_data?.getClientSecret().toString()*/
-
-        val clientData = ClientData()
-        clientData.setClientUrl(intentData?.getClientUrl().toString())
-        clientData.setClientId(intentData?.getClientId().toString())
-        clientData.setClientSecret(intentData?.getClientSecret().toString())
+        MySingleton.baseUrl = intentData?.getClientUrl().toString()
+        MySingleton.client_id = intentData?.getClientId().toString()
+        MySingleton.client_secret = intentData?.getClientSecret().toString()
 
         val enterPinToActivateFragment = EnterPinToActivateFragment()
 

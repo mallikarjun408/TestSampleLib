@@ -4,10 +4,11 @@ import com.google.gson.annotations.SerializedName
 
 class CardActivationModel {
 
-   /* @SerializedName("coord")
-    var coord: String? = null
-    @SerializedName("sys")
-    var sys: String? = null*/
+
+    /* @SerializedName("coord")
+     var coord: String? = null
+     @SerializedName("sys")
+     var sys: String? = null*/
 
     /*
     * {
@@ -19,7 +20,7 @@ class CardActivationModel {
     * */
 
     @SerializedName("success")
-    private var isSuccess: String? = null
+    private var isSuccess: Boolean? = null
 
     @SerializedName("message")
     private var message: String? = null
@@ -30,11 +31,20 @@ class CardActivationModel {
     @SerializedName("data")
     private var data: String? = null
 
-    fun getIsSuccess(): String? {
+    @SerializedName("code")
+    private var code: String? = null
+
+    private var error: Throwable ? = null
+
+    constructor(err: Throwable){
+        error = err
+    }
+
+    fun getIsSuccess(): Boolean? {
         return isSuccess
     }
 
-    fun setIsSuccess(success: String) {
+    fun setIsSuccess(success: Boolean) {
         isSuccess = success
     }
 
@@ -60,5 +70,21 @@ class CardActivationModel {
 
     fun setData(mData: String) {
         data = mData
+    }
+
+    fun getCode(): String? {
+        return code
+    }
+
+    fun setCode(mCode: String) {
+        code = mCode
+    }
+
+    fun getError():Throwable?{
+        return  error
+    }
+
+    fun setError(err:Throwable){
+        error = err
     }
 }

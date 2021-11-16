@@ -7,6 +7,7 @@ class ClientData : Serializable {
     private lateinit var clientUrl: String
     private lateinit var client_id: String
     private lateinit var client_secret: String
+    
 
     fun getName(): String? {
         return client_name

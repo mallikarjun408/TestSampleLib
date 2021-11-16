@@ -1,6 +1,7 @@
 package com.example.myapplication.cardactivation.network
 
 import com.example.myapplication.cardactivation.model.CardActivationModel
+import com.google.gson.JsonObject
 import okhttp3.RequestBody
 import org.json.JSONObject
 import retrofit2.Call
@@ -12,7 +13,7 @@ interface RestApiService {
     val userList: Call<UserWrapper?>? */
 
     @PUT("card-activation")
-    fun cardActivationAPI(@HeaderMap header: Map<String,String>, @Body body: JSONObject): Call<CardActivationModel>
+    fun cardActivationAPI(@HeaderMap header: Map<String,String>, @Body body: JsonObject): Call<CardActivationModel>
 
 
 

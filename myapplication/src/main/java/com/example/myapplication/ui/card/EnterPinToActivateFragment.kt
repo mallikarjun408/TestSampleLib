@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ClipData
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -26,14 +27,17 @@ import androidx.core.content.ContextCompat.getColor
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.myapplication.cardactivation.model.CardActivationModel
 import com.example.myapplication.cardactivation.viewmodel.CardActivationViewModel
 import com.example.myapplication.utils.AppUtils
 import com.example.myapplication.utils.AppUtils.hideKeyboard
+import com.github.razir.progressbutton.attachTextChangeAnimator
+import com.github.razir.progressbutton.bindProgressButton
+import com.github.razir.progressbutton.hideProgress
+import com.github.razir.progressbutton.showProgress
 
 
 class EnterPinToActivateFragment: Fragment(){
-
-    private lateinit var binding: EnterpinFragmentBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,8 +49,6 @@ class EnterPinToActivateFragment: Fragment(){
     ): View? {
         // Get the custom view for this fragment layout
         val view: View = inflater.inflate(R.layout.enterpin_fragment, container, false)
-
-
         // Return the fragment view/layout
         return view;
     }
@@ -64,29 +66,14 @@ class EnterPinToActivateFragment: Fragment(){
         val edt3 = view.findViewById<EditText>(R.id.edt_three)
         val edt4 = view.findViewById<EditText>(R.id.edt_four)
         val txtAccNumMsg = view.findViewById<TextView>(R.id.txtAccNumMsg)
-
-        // Get the support fragment manager instance
-        val manager = activity?.supportFragmentManager
+        bindProgressButton(btnActivate)
+        btnActivate.attachTextChangeAnimator()
         btnActivate.setOnClickListener {
-
-
-
-
-
-
-/*
-            val cardActivatedFragment = CardActivatedFragment()
-            // Begin the fragment transition using support fragment manager
-            val transaction = manager?.beginTransaction()
-
-            // Replace the fragment on container
-            transaction?.replace(R.id.fragmentMain,cardActivatedFragment)
-            transaction?.addToBackStack(null)
-
-            // Finishing the transition
-            transaction?.commit() */
-
-
+            btnActivate.showProgress {
+                buttonTextRes = R.string.empty
+                progressColor = Color.WHITE
+            }
+            mViewModel.activateCard()
         }
 
         edt1.addTextChangedListener(object : TextWatcher {
@@ -159,19 +146,49 @@ class EnterPinToActivateFragment: Fragment(){
         })
         mViewModel.accNumberValidate.observe(viewLifecycleOwner, Observer<Boolean> { isAccNumberValid ->
             // Update the UI
-            //Log.i("isAccNumberValid", isAccNumberValid.toString())
             txtAccNumMsg.visibility = View.VISIBLE
             if(isAccNumberValid){
                 txtAccNumMsg.text = getString(R.string.accnum_valid_success)
                 txtAccNumMsg.setTextColor(getColor(txtAccNumMsg.context,R.color.card_number_valid_color))
-                mViewModel.activateCard()
+
             }else{
                 txtAccNumMsg.text = getString(R.string.accnum_invalid_error)
                 txtAccNumMsg.setTextColor(getColor(txtAccNumMsg.context,R.color.card_number_invalid_color))
             }
         })
 
+        mViewModel.activateCardDetails.observe(
+            viewLifecycleOwner,
+            {activateCardDetails ->
+
+                if(activateCardDetails.getIsSuccess() == true)
+                    navigateToCardActivateSuccessScreen()
+                else
+                    txtAccNumMsg.text = getString(R.string.accnum_invalid_error)
+                    txtAccNumMsg.setTextColor(getColor(txtAccNumMsg.context,R.color.card_number_invalid_color))
+
+                btnActivate.hideProgress(R.string.card_activate)
+            }
+        )
+        mViewModel.errorMessageData.observe(viewLifecycleOwner,{errorMessageData ->
+            btnActivate.hideProgress(R.string.card_activate)
+            txtAccNumMsg.text = getString(R.string.accnum_invalid_error)
+            txtAccNumMsg.setTextColor(getColor(txtAccNumMsg.context,R.color.card_number_invalid_color))
+
+        })
     }
+
+    private fun navigateToCardActivateSuccessScreen() {
+        // Get the support fragment manager instance
+        val manager = activity?.supportFragmentManager
+
+        val cardActivatedFragment = CardActivatedFragment()
+        val transaction = manager?.beginTransaction()
+        transaction?.replace(R.id.fragmentMain,cardActivatedFragment)
+        transaction?.addToBackStack(null)
+        transaction?.commit()
+    }
+
     override fun onPause() {
         super.onPause()
     }
