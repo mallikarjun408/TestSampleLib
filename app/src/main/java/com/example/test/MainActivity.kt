@@ -31,10 +31,11 @@ class MainActivity : AppCompatActivity() {
 
         btnCardActivate.setOnClickListener {
             val clientData = ClientData()
-            clientData.setName("Card Activation")
-            clientData.setClientUrl(getText(R.string.base_url).toString())
-            clientData.setClientId(getText(R.string.client_id).toString())
-            clientData.setClientSecret(getText(R.string.client_secret).toString())
+            clientData.client_name = "Card Activation"
+            clientData.clientUrl = getText(R.string.base_url).toString()
+            clientData.client_id = getText(R.string.client_id).toString()
+            clientData.client_secret = getText(R.string.client_secret).toString()
+            clientData.service_name = getText(R.string.service_name).toString()
 
             val bundle = Bundle()
             bundle.putSerializable("client_data", clientData)

@@ -9,6 +9,7 @@ object MySingleton{
     var baseUrl=""
     var client_secret=""
     var client_id=""
+    var service_name=""
 
     fun printVarName(){
         println(variableName)

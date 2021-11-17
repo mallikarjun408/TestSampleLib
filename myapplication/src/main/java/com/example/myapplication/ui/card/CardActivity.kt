@@ -12,6 +12,10 @@ import com.example.myapplication.cardactivation.data.MySingleton
 import com.example.myapplication.cardactivation.viewmodel.CardActivationViewModel
 import com.example.myapplication.databinding.CardlayoutBinding
 import com.example.myapplication.databinding.EnterpinFragmentBinding
+import android.view.Gravity
+
+
+
 
 class CardActivity : AppCompatActivity() {
     private lateinit var binding: CardlayoutBinding
@@ -20,8 +24,8 @@ class CardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-
-     //   getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        val window: Window = getWindow()
+        window.setGravity(Gravity.BOTTOM )
 
         binding = CardlayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -34,35 +38,28 @@ class CardActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         toolbar.title = ""
 
-
-        val txtHeader = binding.txtHeader
-
-
         val intentData = intent.getSerializableExtra("client_data") as ClientData?
-        txtHeader.setText(intentData?.getName())
 
-        MySingleton.baseUrl = intentData?.getClientUrl().toString()
-        MySingleton.client_id = intentData?.getClientId().toString()
-        MySingleton.client_secret = intentData?.getClientSecret().toString()
+        MySingleton.baseUrl = intentData?.clientUrl.toString()
+        MySingleton.client_id = intentData?.client_id.toString()
+        MySingleton.client_secret = intentData?.client_secret.toString()
+        MySingleton.service_name=intentData?.service_name.toString()
 
         val enterPinToActivateFragment = EnterPinToActivateFragment()
-
-        // Get the support fragment manager instance
         val manager = supportFragmentManager
-        // Begin the fragment transition using support fragment manager
         val transaction = manager.beginTransaction()
-
-        // Replace the fragment on container
         transaction.replace(R.id.fragmentMain,enterPinToActivateFragment)
         transaction.addToBackStack(null)
-
-        // Finishing the transition
         transaction.commit()
 
         val txtClose = binding.txtClose
+        val txtHeader = binding.txtHeader
 
+        txtHeader.setText(intentData?.client_name)
         txtClose.setOnClickListener{
             finish()
         }
+
+
     }
 }

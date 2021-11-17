@@ -2,13 +2,14 @@ package com.example.myapplication.cardactivation.data
 import java.io.Serializable
 
 class ClientData : Serializable {
-    private lateinit var client_name: String
-    private lateinit var header_card: String
-    private lateinit var clientUrl: String
-    private lateinit var client_id: String
-    private lateinit var client_secret: String
+    var client_name: String? = null
+    var header_card: String? = null
+    var clientUrl: String? = null
+    var client_id: String? = null
+    var client_secret: String? = null
+    var service_name:String? = null
     
-
+/*
     fun getName(): String? {
         return client_name
     }
@@ -51,6 +52,17 @@ class ClientData : Serializable {
     fun setClientSecret(clientSecret : String?) {
         this.client_secret = clientSecret!!
     }
+
+    fun getServiceName(): String? {
+        return service_name
+    }
+
+    @JvmName("service_name")
+    fun setServiceName(sName : String?) {
+        this.service_name = sName!!
+    }
+
+    */
 
 
 

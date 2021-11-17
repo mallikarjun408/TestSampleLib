@@ -4,17 +4,13 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.myapplication.cardactivation.data.ClientData
 import com.example.myapplication.cardactivation.data.MySingleton
 import com.example.myapplication.cardactivation.model.CardActivationModel
-import com.example.myapplication.cardactivation.network.RestApiService
+import com.example.myapplication.cardactivation.model.StatusResponse
 import com.example.myapplication.cardactivation.network.RetrofitInstance.apiService
 import com.example.myapplication.utils.AppUtils
 import retrofit2.Callback
-import okhttp3.MediaType
 import org.json.JSONObject
-import okhttp3.RequestBody
-import org.json.JSONStringer
 import retrofit2.Call
 import retrofit2.Response
 import com.google.gson.JsonObject
@@ -24,27 +20,16 @@ import com.example.myapplication.utils.MyErrorMessage
 import com.google.gson.Gson
 
 
-
-
-
-
-
-
-
-
-
-
 class CardActivationViewModel: ViewModel(){
 
     private val TAG: String = CardActivationViewModel::class.java.getSimpleName()
 
-    var clientUrl: String = ""
-    var clientId: String =""
-    var clientSecret: String = ""
+    var dateLastMaintained : String? = null
 
     val accNumberValidate = MutableLiveData<Boolean>()
     val activateCardDetails = MutableLiveData<CardActivationModel>()
     val errorMessageData = MutableLiveData<MyErrorMessage>()
+    val statusResponse = MutableLiveData<StatusResponse>()
 
     var accNumber: String =""
 
@@ -58,29 +43,54 @@ class CardActivationViewModel: ViewModel(){
 
     }
 
-    fun activateCard (){
-
-        val header = HashMap<String, String>()
-        header["Content-Type"] = "application/json"
-        header["Accept"] = "*/*"
-        header["client_secret"] = MySingleton.client_secret
-        header["client_id"] = MySingleton.client_id
+    fun getCardStatus () {
 
         val jsonObj = JSONObject()
         jsonObj.put("pan","4111111111111111")
-        jsonObj.put("action","activat")
-        jsonObj.put("dateLastMaintained","2019-04-04:11:25:31.940000")
+
 
         val jsonParser = JsonParser()
-       var gsonObject = jsonParser.parse(jsonObj.toString()) as JsonObject
-        val cardActivationAPI = apiService.cardActivationAPI( header, gsonObject)
+        var gsonObject = jsonParser.parse(jsonObj.toString()) as JsonObject
+
+        val cardStatusAPI = apiService.getCardStatus( gsonObject)
+
+        cardStatusAPI.enqueue(object:Callback<StatusResponse>{
+            override fun onResponse(
+                call: Call<StatusResponse>,
+                response: Response<StatusResponse>
+            ) {
+               if(response.code() == 200){
+                   statusResponse.value = response.body()
+               } else {
+                   errorMessageData.value =  Gson().fromJson(
+                       response.errorBody()!!.charStream(),
+                       MyErrorMessage::class.java
+                   )
+               }
+            }
+
+            override fun onFailure(call: Call<StatusResponse>, t: Throwable) {
+                activateCardDetails.value = CardActivationModel(t)
+            }
+
+        })
+    }
+
+    fun activateCardConnex (dateLastMaintained:String?) {
+
+        val jsonObj = JSONObject()
+        jsonObj.put("pan","4111111111111111")
+        jsonObj.put("action","activate")
+        jsonObj.put("dateLastMaintained",dateLastMaintained)
+
+        val jsonParser = JsonParser()
+        var gsonObject = jsonParser.parse(jsonObj.toString()) as JsonObject
+        val cardActivationAPI = apiService.cardActivationConnexAPI( gsonObject)
         cardActivationAPI.enqueue(object :Callback<CardActivationModel>{
             override fun onResponse(
                 call: Call<CardActivationModel>,
                 response: Response<CardActivationModel>
             ) {
-                val i = Log.i("response cardActivation", response.message().toString())
-
                 if(response.code() == 200)
                     activateCardDetails.value = response.body()
                 else
@@ -91,10 +101,39 @@ class CardActivationViewModel: ViewModel(){
             }
 
             override fun onFailure(call: Call<CardActivationModel>, t: Throwable) {
-               Log.i(TAG,"Throwable")
+                Log.i(TAG,"Throwable")
                 activateCardDetails.value = CardActivationModel(t)
             }
+        })
 
+    }
+    fun activateCardOmaha () {
+
+        val jsonObj = JSONObject()
+        jsonObj.put("accountNumber","4111111111111111")
+        jsonObj.put("action","activate")
+
+        val jsonParser = JsonParser()
+        var gsonObject = jsonParser.parse(jsonObj.toString()) as JsonObject
+        val cardActivationAPI = apiService.cardActivationOmahaAPI( gsonObject)
+        cardActivationAPI.enqueue(object :Callback<CardActivationModel>{
+            override fun onResponse(
+                call: Call<CardActivationModel>,
+                response: Response<CardActivationModel>
+            ) {
+                if(response.code() == 200)
+                    activateCardDetails.value = response.body()
+                else
+                    errorMessageData.value =  Gson().fromJson(
+                        response.errorBody()!!.charStream(),
+                        MyErrorMessage::class.java
+                    )
+            }
+
+            override fun onFailure(call: Call<CardActivationModel>, t: Throwable) {
+                Log.i(TAG,"Throwable")
+                activateCardDetails.value = CardActivationModel(t)
+            }
         })
 
     }
@@ -108,6 +147,10 @@ class CardActivationViewModel: ViewModel(){
     }
     fun errorMessage(): LiveData<MyErrorMessage>?{
         return errorMessageData
+    }
+
+    fun getStatusResponse(): LiveData<StatusResponse>?{
+        return statusResponse
     }
 
 }

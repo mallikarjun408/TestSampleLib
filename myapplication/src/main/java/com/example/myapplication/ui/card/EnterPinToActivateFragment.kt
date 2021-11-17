@@ -2,7 +2,6 @@ package com.example.myapplication.ui.card
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.ClipData
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
@@ -15,22 +14,14 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
-import androidx.fragment.app.Fragment
-import com.example.myapplication.R
-import com.example.myapplication.databinding.EnterpinFragmentBinding
 import android.widget.TextView
-import android.widget.TextView.OnEditorActionListener
-import android.widget.Toast
-import androidx.annotation.Nullable
-import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getColor
-import androidx.core.content.ContextCompat.getSystemService
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.myapplication.cardactivation.model.CardActivationModel
+import com.example.myapplication.R
+import com.example.myapplication.cardactivation.data.MySingleton
 import com.example.myapplication.cardactivation.viewmodel.CardActivationViewModel
-import com.example.myapplication.utils.AppUtils
-import com.example.myapplication.utils.AppUtils.hideKeyboard
 import com.github.razir.progressbutton.attachTextChangeAnimator
 import com.github.razir.progressbutton.bindProgressButton
 import com.github.razir.progressbutton.hideProgress
@@ -66,6 +57,7 @@ class EnterPinToActivateFragment: Fragment(){
         val edt3 = view.findViewById<EditText>(R.id.edt_three)
         val edt4 = view.findViewById<EditText>(R.id.edt_four)
         val txtAccNumMsg = view.findViewById<TextView>(R.id.txtAccNumMsg)
+
         bindProgressButton(btnActivate)
         btnActivate.attachTextChangeAnimator()
         btnActivate.setOnClickListener {
@@ -73,7 +65,11 @@ class EnterPinToActivateFragment: Fragment(){
                 buttonTextRes = R.string.empty
                 progressColor = Color.WHITE
             }
-            mViewModel.activateCard()
+
+            if(MySingleton.service_name == "connex")
+                mViewModel.getCardStatus()
+            else
+                mViewModel.activateCardOmaha()
         }
 
         edt1.addTextChangedListener(object : TextWatcher {
@@ -161,7 +157,7 @@ class EnterPinToActivateFragment: Fragment(){
             viewLifecycleOwner,
             {activateCardDetails ->
 
-                if(activateCardDetails.getIsSuccess() == true)
+                if(activateCardDetails.isSuccess == true)
                     navigateToCardActivateSuccessScreen()
                 else
                     txtAccNumMsg.text = getString(R.string.accnum_invalid_error)
@@ -171,10 +167,17 @@ class EnterPinToActivateFragment: Fragment(){
             }
         )
         mViewModel.errorMessageData.observe(viewLifecycleOwner,{errorMessageData ->
-            btnActivate.hideProgress(R.string.card_activate)
-            txtAccNumMsg.text = getString(R.string.accnum_invalid_error)
-            txtAccNumMsg.setTextColor(getColor(txtAccNumMsg.context,R.color.card_number_invalid_color))
 
+            btnActivate.hideProgress(R.string.card_activate)
+            txtAccNumMsg.text = errorMessageData.code
+            txtAccNumMsg.setTextColor(getColor(txtAccNumMsg.context,R.color.card_number_invalid_color))
+        })
+
+        mViewModel.statusResponse.observe(viewLifecycleOwner,{statusResponse ->
+            val dateLastMaintained = statusResponse?.data?.dateLastMaintained
+            mViewModel.dateLastMaintained = dateLastMaintained
+            Log.i("","")
+            mViewModel.activateCardConnex(dateLastMaintained)
         })
     }
 

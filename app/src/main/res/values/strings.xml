@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Test</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
@@ -10,7 +10,12 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
+
     <string name="client_id">269d98e4922fb3895e9ae2108cbb5064</string>
     <string name="client_secret">269d98e4922fb3895e9ae2108cbb5064</string>
-    <string name="base_url">https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/902a620f-1bc1-4977-8c8d-933022d52108/card-activation-api/2.0.16/m/omaha/card-activation/</string>
+   <!-- <string name="base_url">https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/902a620f-1bc1-4977-8c8d-933022d52108/</string> -->
+    <string name="base_url">https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/902a620f-1bc1-4977-8c8d-933022d52108/</string>
+    <string name="service_name">omaha</string>
+
+
 </resources>
