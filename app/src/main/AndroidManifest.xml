@@ -22,7 +22,7 @@
         </activity>
 
         <!-- Android Module Integration Mandatory Code -->
-        <activity android:name="com.example.myapplication.ui.card.CardActivity"
+        <activity android:name="com.coop.cardactivationwidget.ui.card.CardActivity"
             android:theme="@style/AppDialogTheme"></activity>
     </application>
 

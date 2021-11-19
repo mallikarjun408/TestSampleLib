@@ -1,0 +1,7 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="AppDialogTheme" parent="Theme.AppCompat.Light.Dialog.MinWidth">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="background">@drawable/roundedcorner_background</item>
+    </style>
+</resources>

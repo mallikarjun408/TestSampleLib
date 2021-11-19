@@ -1,17 +1,10 @@
 package com.example.test
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.view.WindowManager
-import android.widget.Toast
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
-import com.example.myapplication.cardactivation.data.ClientData
-import com.example.myapplication.cardactivation.viewmodel.CardActivationViewModel
-import com.example.myapplication.ui.card.CardActivity
+import com.coop.cardactivationwidget.cardactivation.data.ClientData
+import com.coop.cardactivationwidget.ui.card.CardActivity
 import com.example.test.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
