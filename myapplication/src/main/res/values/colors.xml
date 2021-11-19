@@ -12,10 +12,15 @@
     <color name="green">#117322</color>
 
     <!--  Cardlayout Container -->
+
+        <!--  Layout background -->
+        <color name="layout_background">@color/gray2</color>
         <!--  Header Text -->
+        <color name="header_bar_background">@color/white</color>
         <color name="header_text_color">#151E22</color>
 
-    <!--  Enter Pin Screen -->
+
+    <!--  Enter card number screen -->
 
         <!--  card number invalid -->
         <color name="card_intro_text">#9A000C</color>
