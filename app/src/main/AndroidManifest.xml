@@ -20,6 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Android Module Integration Mandatory Code -->
         <activity android:name="com.example.myapplication.ui.card.CardActivity"
             android:theme="@style/AppDialogTheme"></activity>
     </application>

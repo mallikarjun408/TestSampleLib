@@ -2,7 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
     <color name="colorPrimary">#FFFFFFFF</color>
     <color name="colorSnowWhite">#F8F8FF</color>
     <color name="colorBlack6">#151E22</color>
@@ -33,7 +32,6 @@
         <color name="card_activated_text_color">#151E22</color>
         <!--  close button -->
         <color name="card_activated_button_close_color">@color/white</color>
-
 
 
 </resources>

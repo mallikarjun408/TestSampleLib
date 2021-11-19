@@ -135,7 +135,7 @@ class EnterPinToActivateFragment: Fragment(){
                     val inputMethodManager =
                         activity?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
                     inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
-                    btnActivate.isEnabled = true
+
                     mViewModel.validateAccountNumber(edt1.text.toString(),edt2.text.toString(),edt3.text.toString(),edt4.text.toString())
                 }
             }
@@ -144,10 +144,12 @@ class EnterPinToActivateFragment: Fragment(){
             // Update the UI
             txtAccNumMsg.visibility = View.VISIBLE
             if(isAccNumberValid){
+                btnActivate.isEnabled = true
                 txtAccNumMsg.text = getString(R.string.accnum_valid_success)
                 txtAccNumMsg.setTextColor(getColor(txtAccNumMsg.context,R.color.card_number_valid_color))
 
             }else{
+                btnActivate.isEnabled = false
                 txtAccNumMsg.text = getString(R.string.accnum_invalid_error)
                 txtAccNumMsg.setTextColor(getColor(txtAccNumMsg.context,R.color.card_number_invalid_color))
             }
@@ -169,7 +171,18 @@ class EnterPinToActivateFragment: Fragment(){
         mViewModel.errorMessageData.observe(viewLifecycleOwner,{errorMessageData ->
 
             btnActivate.hideProgress(R.string.card_activate)
-            txtAccNumMsg.text = errorMessageData.code
+
+           // txtAccNumMsg.text =   errorMessageData.code
+
+
+            if(errorMessageData.description !== null){
+                txtAccNumMsg.text = errorMessageData.description
+            }else if(errorMessageData.code == null){
+                txtAccNumMsg.text =   errorMessageData.error
+            }else{
+                txtAccNumMsg.text = errorMessageData.code
+            }
+
             txtAccNumMsg.setTextColor(getColor(txtAccNumMsg.context,R.color.card_number_invalid_color))
         })
 

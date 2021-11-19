@@ -10,12 +10,12 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
-
-    <string name="client_id">269d98e4922fb3895e9ae2108cbb5064</string>
-    <string name="client_secret">269d98e4922fb3895e9ae2108cbb5064</string>
-   <!-- <string name="base_url">https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/902a620f-1bc1-4977-8c8d-933022d52108/</string> -->
-    <string name="base_url">https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/902a620f-1bc1-4977-8c8d-933022d52108/</string>
-    <string name="service_name">omaha</string>
+    <!-- Android Module Integration Mandatory Params -->
+    <string name="client_id">405b3e26b6514060b2992eeeddd4e7bd</string>  <!--  269d98e4922fb3895e9ae2108cbb5064  -->
+    <string name="client_secret">7b7447357e584F22808944505aF90eb5</string>  <!--  269d98e4922fb3895e9ae2108cbb5064 -->
+    <!-- <string name="base_url">https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/902a620f-1bc1-4977-8c8d-933022d52108/</string> -->
+    <string name="base_url">https://api.beta.coop.org/</string>
+    <string name="service_name">connex</string>
 
 
 </resources>

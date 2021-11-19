@@ -136,6 +136,7 @@
         android:textColor="@color/card_number_invalid_color"
         android:visibility="gone"
         android:textSize="15dp"
+        android:textAlignment="center"
         android:fontFamily="@font/font_regular"/>
 
     <Button

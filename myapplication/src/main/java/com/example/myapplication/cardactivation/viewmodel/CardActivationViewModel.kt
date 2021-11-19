@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.myapplication.cardactivation.data.MySingleton
 import com.example.myapplication.cardactivation.model.CardActivationModel
 import com.example.myapplication.cardactivation.model.StatusResponse
 import com.example.myapplication.cardactivation.network.RetrofitInstance.apiService
@@ -39,14 +38,14 @@ class CardActivationViewModel: ViewModel(){
 
         accNumber = edt1+edt2+edt3+edt4
 
-        accNumberValidate.value = AppUtils.isAccountNumberValid(accNumber)
+        accNumberValidate.value = AppUtils.isAccountNumberValid(accNumber) // CardValidator.validateLuhnNumber(accNumber)
 
     }
 
     fun getCardStatus () {
 
         val jsonObj = JSONObject()
-        jsonObj.put("pan","4111111111111111")
+        jsonObj.put("pan",accNumber) //4111111111111111, 5811280000912531
 
 
         val jsonParser = JsonParser()
@@ -79,7 +78,7 @@ class CardActivationViewModel: ViewModel(){
     fun activateCardConnex (dateLastMaintained:String?) {
 
         val jsonObj = JSONObject()
-        jsonObj.put("pan","4111111111111111")
+        jsonObj.put("pan",accNumber)
         jsonObj.put("action","activate")
         jsonObj.put("dateLastMaintained",dateLastMaintained)
 
@@ -110,7 +109,7 @@ class CardActivationViewModel: ViewModel(){
     fun activateCardOmaha () {
 
         val jsonObj = JSONObject()
-        jsonObj.put("accountNumber","4111111111111111")
+        jsonObj.put("accountNumber",accNumber)  //  4111111111111111
         jsonObj.put("action","activate")
 
         val jsonParser = JsonParser()

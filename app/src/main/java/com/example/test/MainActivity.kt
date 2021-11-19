@@ -30,6 +30,8 @@ class MainActivity : AppCompatActivity() {
         val btnPinChange = binding.buttonSecond
 
         btnCardActivate.setOnClickListener {
+
+        /*    Android Module Integration Mandatory Code Starts */
             val clientData = ClientData()
             clientData.client_name = "Card Activation"
             clientData.clientUrl = getText(R.string.base_url).toString()
@@ -40,9 +42,10 @@ class MainActivity : AppCompatActivity() {
             val bundle = Bundle()
             bundle.putSerializable("client_data", clientData)
             val intent = Intent(this, CardActivity::class.java)
-            intent.putExtra("brandName","Chase")
             intent.putExtras(bundle)
             startActivity(intent)
+
+            /*    Android Module Integration Mandatory Code Ends */
         }
     }
 }

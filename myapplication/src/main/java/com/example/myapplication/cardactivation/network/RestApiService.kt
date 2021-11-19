@@ -10,16 +10,14 @@ import retrofit2.http.*
 
 
 interface RestApiService {
-   /* @get:GET("bQsLPRKKMi?indent=2")
-    val userList: Call<UserWrapper?>? */
 
-    @POST("status-api/2.0.6/m/connex/status.get")
+    @POST("status/v2/connex/status.get")
     fun getCardStatus(@Body body: JsonObject): Call<StatusResponse>
 
-    @PUT("card-activation-api/2.0.16/m/connex/card-activation")
+    @PUT("card-activation/v2/connex/card-activation")
     fun cardActivationConnexAPI(@Body body: JsonObject): Call<CardActivationModel>
 
-    @PUT("card-activation-api/2.0.16/m/omaha/card-activation")
+    @PUT("card-activation/v2/omaha/card-activation")
     fun cardActivationOmahaAPI(@Body body: JsonObject): Call<CardActivationModel>
 
 }

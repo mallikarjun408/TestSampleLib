@@ -23,7 +23,7 @@ object  AppUtils {
     }
 
     public fun isAccountNumberValid(accNum: String): Boolean {
-      val accNumPattern = "^\\d{16}\$"
+        val accNumPattern = "^\\d{16}\$"
         return accNum.matches(accNumPattern.toRegex())
     }
 
