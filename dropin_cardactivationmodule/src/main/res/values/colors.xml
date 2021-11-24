@@ -38,5 +38,4 @@
         <!--  close button -->
         <color name="card_activated_button_close_color">@color/white</color>
 
-
 </resources>

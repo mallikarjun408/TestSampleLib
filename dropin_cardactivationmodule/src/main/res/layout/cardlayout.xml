@@ -46,16 +46,15 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:layout_gravity="end">
 
-            <TextView
+            <ImageButton
                 android:id="@+id/txtClose"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:paddingRight="20dp"
-                android:background="@drawable/close"
-
+                android:layout_width="10dp"
+                android:layout_height="10dp"
                 android:layout_margin="10dp"
+                android:src="@drawable/close"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -72,6 +71,8 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"></LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="1.0"></LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             intent.putExtras(bundle)
             startActivity(intent)
 
-            /*    Android Module Integration Mandatory Code Ends */
+        /*    Android Module Integration Mandatory Code Ends */
         }
     }
 }
