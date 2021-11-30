@@ -15,6 +15,7 @@
 <string name="spinner_header">Select a method...</string>
 
     <string-array name="pinreset_method">
+        <item>Select a method...</item>
         <item>Text</item>
         <item>Phone Call</item>
         <item>Email</item>
