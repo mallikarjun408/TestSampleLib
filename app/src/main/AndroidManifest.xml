@@ -26,6 +26,10 @@
         <activity android:name="com.coop.cardactivationwidget.ui.card.CardActivity"
             android:theme="@style/AppDialogTheme"
            android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name="com.coop.pinchangewidget.ui.pinchange.PinChangeActivity"
+            android:theme="@style/AppDialogTheme"
+            android:windowSoftInputMode="adjustPan"
+            ></activity>
     </application>
 
 </manifest>

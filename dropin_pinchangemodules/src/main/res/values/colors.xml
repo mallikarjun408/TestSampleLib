@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#FFFFFFFF</color>
+    <color name="colorSnowWhite">#F8F8FF</color>
+    <color name="colorBlack6">#151E22</color>
+    <color name="gray2">#F4F6F6</color>
+    <color name="gray3">#D4D9DB</color>
+    <color name="gray4">#5E6B72</color>
+    <color name="blue">#2979FF</color>
+    <color name="green">#117322</color>
+
+    <!--  Cardlayout Container -->
+
+        <!--  Layout background -->
+        <color name="layout_background">@color/gray2</color>
+        <!--  Header Text -->
+        <color name="header_bar_background">@color/white</color>
+        <color name="header_text_color">#151E22</color>
+
+
+    <!--  Enter card number screen -->
+
+        <!--  card number invalid -->
+        <color name="card_intro_text">#9A000C</color>
+        <!--  card number invalid -->
+        <color name="card_number_invalid_color">#9A000C</color>
+        <!--  card number valid -->
+        <color name="card_number_valid_color">#117322</color>
+        <!--  edit text text color -->
+        <color name="enter_pin_text_color">#151E22</color>
+
+    <!--  Card Activated Screen -->     1   1
+
+        <!--  card number invalid -->
+        <color name="card_activated_text_color">#151E22</color>
+        <!--  close button -->
+        <color name="card_activated_button_close_color">@color/white</color>
+
+</resources>

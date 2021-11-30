@@ -12,6 +12,8 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/dropin_cardactivationmodule" />
+            <option value="$PROJECT_DIR$/dropin_pinchangemodule" />
+            <option value="$PROJECT_DIR$/dropin_pinchangemodules" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
