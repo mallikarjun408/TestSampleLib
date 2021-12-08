@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 class CardData {
 
-        @SerializedName("cardStatus")
+        @SerializedName("wrappedKey")
          var cardStatus: CardStatus? = null
 
         @SerializedName("dateLastMaintained")

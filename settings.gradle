@@ -9,5 +9,4 @@ dependencyResolutionManagement {
 rootProject.name = "Test"
 include ':app'
 include ':dropin_cardactivationmodule'
-include ':dropin_pinchangemodule'
 include ':dropin_pinchangemodules'

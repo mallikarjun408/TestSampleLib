@@ -21,7 +21,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="@string/card_activate"
+        app:title="@string/pin_reset_header"
         >
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="20dp"
-                android:text="@string/card_activate_header"
+                android:text="@string/pin_reset_header"
                 android:textSize="20dp"
                 android:fontFamily="@font/font_regular"
                 android:textColor="@color/header_text_color"

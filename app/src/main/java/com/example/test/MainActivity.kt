@@ -46,11 +46,13 @@ class MainActivity : AppCompatActivity() {
 
             /*    Android Module Integration Mandatory Code Starts */
             val clientData = com.coop.pinchangewidget.pinchange.data.ClientData()
-            clientData.client_name = "Card Activation"
-            clientData.clientUrl = getText(R.string.base_url).toString()
+            clientData.client_name = "Pin Reset"
+            clientData.clientUrl = getText(R.string.base_pin_url).toString()
             clientData.client_id = getText(R.string.client_id).toString()
             clientData.client_secret = getText(R.string.client_secret).toString()
             clientData.service_name = getText(R.string.service_name).toString()
+            clientData.panNumber = "5811280000929360"
+
 
             val bundle = Bundle()
             bundle.putSerializable("client_data", clientData)

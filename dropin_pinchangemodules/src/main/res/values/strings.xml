@@ -1,18 +1,19 @@
 <resources>
-    <string name="app_name">DropInCardActivationLib</string>
+    <string name="app_name">DropInPinChangeLib</string>
 
-    <string name="enter_your_cardNumber">Enter your primary account number to activate card</string>
-    <string name="card_activate">Activate</string>
-    <string name="card_activate_header">Card Activate</string>
-    <string name="card_activate_success">The card has been successfully activated </string>
-    <string name="accnum_invalid_error">This PAN is invalid, please check again.</string>
-    <string name="accnum_valid_success">Account successfully entered.</string>
-    <string name="txt_close">Close</string>
+    <string name="pin_reset_header">PIN Reset</string>
+
+
+
     <string name="empty" />
-    <string name="pinchange">Pin Change</string>
-    
-    <string name="pinreset_content">To change the PIN on this card we need to verify your identity. Please select a method to retreive a One Time Password.</string>
-<string name="spinner_header">Select a method...</string>
+
+    <string name="btn_txtselect">Select</string>
+    <string name="enter_pin_text">Create a new 4 Digit PIN.</string>
+    <string name="enter_4digit_pin">Enter 4 Digit PIN</string>
+    <string name="reenter_4digit_pin">Re-enter 4 Digit PIN</string>
+    <string name="enter_pin_errortext">These numbers do not match.Please check again.</string>
+    <string name="txt_close">close</string>
+    <string name="pin_change_success">Your PIN has been updated.</string>
 
     <string-array name="pinreset_method">
         <item>Select a method...</item>

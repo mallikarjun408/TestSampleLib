@@ -8,6 +8,7 @@ class ClientData : Serializable {
     var client_id: String? = null
     var client_secret: String? = null
     var service_name:String? = null
+    var panNumber:String? = null
     
 /*
     fun getName(): String? {

@@ -13,6 +13,8 @@ import com.coop.pinchangewidget.pinchange.data.MySingleton
 
 
 class PinChangeActivity : AppCompatActivity() {
+
+
     private lateinit var binding: PinchangeActivityBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,14 +22,10 @@ class PinChangeActivity : AppCompatActivity() {
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         val window: Window = getWindow()
-        window.setGravity(Gravity.BOTTOM )
+        window.setGravity(Gravity.BOTTOM)
 
         binding = PinchangeActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val mViewModel: PinChangeViewModel = ViewModelProvider(this).get(
-            PinChangeViewModel::class.java
-        )
 
         val toolbar = binding.toolbar
         setSupportActionBar(toolbar)
@@ -38,23 +36,23 @@ class PinChangeActivity : AppCompatActivity() {
         MySingleton.baseUrl = intentData?.clientUrl.toString()
         MySingleton.client_id = intentData?.client_id.toString()
         MySingleton.client_secret = intentData?.client_secret.toString()
-        MySingleton.service_name=intentData?.service_name.toString()
+       // MySingleton.service_name=intentData?.service_name.toString()
+        MySingleton.panNumber = intentData?.panNumber.toString()
 
-        val selectPinChangeMethodFragment = SelectPinChangeMethodFragment()
+        val createNewPinFragment = CreateNewPinFragment()
         val manager = supportFragmentManager
         val transaction = manager.beginTransaction()
-        transaction.replace(R.id.fragmentMain,selectPinChangeMethodFragment)
+        transaction.replace(R.id.fragmentMain,createNewPinFragment)
         transaction.addToBackStack(null)
         transaction.commit()
 
         val txtClose = binding.txtClose
         val txtHeader = binding.txtHeader
 
-        txtHeader.setText(intentData?.client_name)
+       // txtHeader.setText(intentData?.client_name)
         txtClose.setOnClickListener{
             finish()
         }
-
-
     }
+
 }

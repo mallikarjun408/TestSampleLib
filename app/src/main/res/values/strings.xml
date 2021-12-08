@@ -17,5 +17,8 @@
     <string name="base_url">https://api.beta.coop.org/</string>
     <string name="service_name">connex</string>
 
+    <!-- pin change values-->
+
+    <string name="base_pin_url">https://api.beta.coop.org/pin/v1/</string>
 
 </resources>

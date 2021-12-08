@@ -10,6 +10,7 @@
     <color name="gray4">#5E6B72</color>
     <color name="blue">#2979FF</color>
     <color name="green">#117322</color>
+    <color name="edt_border_color">#73B3FF</color>
 
     <!--  Cardlayout Container -->
 
@@ -19,22 +20,25 @@
         <color name="header_bar_background">@color/white</color>
         <color name="header_text_color">#151E22</color>
 
+    <!--  Enter new pin screen -->
 
-    <!--  Enter card number screen -->
-
-        <!--  card number invalid -->
-        <color name="card_intro_text">#9A000C</color>
-        <!--  card number invalid -->
-        <color name="card_number_invalid_color">#9A000C</color>
-        <!--  card number valid -->
-        <color name="card_number_valid_color">#117322</color>
+        <!--  new pin screen header -->
+        <color name="page_header_color">#263238</color>
+        <!--  enter pin txt -->
+        <color name="txt_enterpin_color">#263238</color>
+        <!--  reenter pin txt -->
+        <color name="txt_reenterpin_color">#263238</color>
         <!--  edit text text color -->
-        <color name="enter_pin_text_color">#151E22</color>
+        <color name="edt_pin_color">#263238</color>
+        <!-- btn color-->
+        <color name="btn_select_color">#1868EB</color>
+        <color name="txt_error">#DB002C</color>
+        <color name="txt_error_background">#FFEBEB</color>
 
-    <!--  Card Activated Screen -->     1   1
+    <!--  new change success Screen -->
 
-        <!--  card number invalid -->
-        <color name="card_activated_text_color">#151E22</color>
+        <!--  success message -->
+        <color name="pin_success_txt_color">#263238</color>
         <!--  close button -->
         <color name="card_activated_button_close_color">@color/white</color>
 

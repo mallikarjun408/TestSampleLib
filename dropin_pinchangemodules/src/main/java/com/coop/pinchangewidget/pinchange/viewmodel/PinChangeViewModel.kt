@@ -1,11 +1,15 @@
 package com.coop.pinchangewidget.pinchange.viewmodel
 
+import android.os.Build
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.coop.pinchangewidget.pinchange.data.MySingleton
 import com.coop.pinchangewidget.pinchange.model.PinChangeModel
 import com.coop.pinchangewidget.pinchange.model.StatusResponse
+import com.coop.pinchangewidget.pinchange.model.WrapKeyResponse
 import com.coop.pinchangewidget.pinchange.network.RetrofitInstance.apiService
 import com.coop.pinchangewidget.utils.AppUtils
 import com.coop.pinchangewidget.utils.MyErrorMessage
@@ -22,43 +26,42 @@ class PinChangeViewModel: ViewModel(){
 
     private val TAG: String = PinChangeViewModel::class.java.getSimpleName()
 
-    var dateLastMaintained : String? = null
-
-    val accNumberValidate = MutableLiveData<Boolean>()
-    val activateCardDetails = MutableLiveData<PinChangeModel>()
+    val isPinValidate = MutableLiveData<Boolean>()
     val errorMessageData = MutableLiveData<MyErrorMessage>()
-    val statusResponse = MutableLiveData<StatusResponse>()
 
-    var accNumber: String =""
-
+   // val pinChangeThrowable = MutableLiveData<PinChangeModel>()
 
 
-    fun validateAccountNumber(edt1: String,edt2: String, edt3: String,edt4: String) {
+    // wraper key
+    val wraperKeyResponse = MutableLiveData<WrapKeyResponse>()
 
-        accNumber = edt1+edt2+edt3+edt4
+    // pinChangeResponse
+    val pinChangeResponse = MutableLiveData<PinChangeModel>()
 
-        accNumberValidate.value = AppUtils.isAccountNumberValid(accNumber) // CardValidator.validateLuhnNumber(accNumber)
 
+    fun validatePin(pin: String,re_pin: String) {
+
+        isPinValidate.value = pin == re_pin
     }
 
-    fun getCardStatus () {
+    fun getWraperKey () {
 
         val jsonObj = JSONObject()
-        jsonObj.put("pan",accNumber) //4111111111111111, 5811280000912531
-
+        var wraperRandomKey = AppUtils.generateWraperRandomKey()
+        jsonObj.put("pinKey",wraperRandomKey)
 
         val jsonParser = JsonParser()
         var gsonObject = jsonParser.parse(jsonObj.toString()) as JsonObject
 
-        val cardStatusAPI = apiService.getCardStatus( gsonObject)
+        val wraperKeyAPI = apiService.getWrapperKeyAPI( gsonObject)
 
-        cardStatusAPI.enqueue(object:Callback<StatusResponse>{
+        wraperKeyAPI.enqueue(object:Callback<WrapKeyResponse>{
             override fun onResponse(
-                call: Call<StatusResponse>,
-                response: Response<StatusResponse>
+                call: Call<WrapKeyResponse>,
+                response: Response<WrapKeyResponse>
             ) {
                if(response.code() == 200){
-                   statusResponse.value = response.body()
+                   wraperKeyResponse.value = response.body()
                } else {
                    errorMessageData.value =  Gson().fromJson(
                        response.errorBody()!!.charStream(),
@@ -67,88 +70,53 @@ class PinChangeViewModel: ViewModel(){
                }
             }
 
-            override fun onFailure(call: Call<StatusResponse>, t: Throwable) {
-                activateCardDetails.value = PinChangeModel(t)
+            override fun onFailure(call: Call<WrapKeyResponse>, t: Throwable) {
+                pinChangeResponse.value = PinChangeModel(t)
             }
-
         })
     }
 
-    fun activateCardConnex (dateLastMaintained:String?) {
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    fun pinChangeAPICall (panNumber:String, wrappedKey:String, newPin:String) {
+
+        var encryptedPin = AppUtils.generateKeyEncryptedBase64String(newPin)
 
         val jsonObj = JSONObject()
-        jsonObj.put("pan",accNumber)
-        jsonObj.put("action","activate")
-        jsonObj.put("dateLastMaintained",dateLastMaintained)
+        /*jsonObj.put("pan","5811280000929360")
+        jsonObj.put("wrappedKey","cHatV7GmFGnu_KGh_26jila3PyzNICA9gKTdQw6l5w1aZcQR2qomwoLZ4Bdo0q5EPhqbfMCwCeNkg7mYWqg6l5_zemHHw-R8L0j1kM4Qgyr0Leklp6THvxEmWyfUw0AxunMoSzhS6T7VDJ9O6s-FAKo3YH5xPpAN8BMKQW5KDFrvQpHm8Z_MUc80E26dIArHIXA5Idzw83g2M4MQtC984LcUu0XcfRMEXFNc17Gu_2V-806vvEikBvz_zKoz-fCr6OrudKP4egzHLqzEnJou_jJJDLdZlz0VIdzuOxZAUy-r4DEK7nRJL13EirEMxmKfdYDuybz50IrCfywmNshxtA")
+        jsonObj.put("newPin","eyJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiQTI1NkdDTUtXIiwiaXYiOiJkMmpCa3hKMkxVXzRfOWQ0IiwidGFnIjoiTHd0bGtZYUhwQWh0OUN0ZVhlZG5pQSJ9.rxQO_LFP7SWRi8rPV6VX6ALgSmiI8CRj-1AY01bUfnE.GbVDvUBSUg6l9Gfi.dkAqPw.DWd1Wq-VgA_jy8EifZHToA")
+*/
+
+        jsonObj.put("pan","5811280000929360")
+        jsonObj.put("wrappedKey",wrappedKey)
+        jsonObj.put("newPin",encryptedPin)
+
 
         val jsonParser = JsonParser()
         var gsonObject = jsonParser.parse(jsonObj.toString()) as JsonObject
-        val cardActivationAPI = apiService.cardActivationConnexAPI( gsonObject)
-        cardActivationAPI.enqueue(object :Callback<PinChangeModel>{
+
+        val pinChangeAPI = apiService.pinChangeAPI( gsonObject)
+
+        pinChangeAPI.enqueue(object:Callback<PinChangeModel>{
             override fun onResponse(
                 call: Call<PinChangeModel>,
                 response: Response<PinChangeModel>
             ) {
-                if(response.code() == 200)
-                    activateCardDetails.value = response.body()
-                else
+                if(response.code() == 200){
+                    pinChangeResponse.value = response.body()
+                } else {
                     errorMessageData.value =  Gson().fromJson(
                         response.errorBody()!!.charStream(),
                         MyErrorMessage::class.java
                     )
+                }
             }
 
             override fun onFailure(call: Call<PinChangeModel>, t: Throwable) {
-                Log.i(TAG,"Throwable")
-                activateCardDetails.value = PinChangeModel(t)
+                pinChangeResponse.value = PinChangeModel(t)
             }
+
         })
-
     }
-    fun activateCardOmaha () {
-
-        val jsonObj = JSONObject()
-        jsonObj.put("accountNumber",accNumber)  //  4111111111111111
-        jsonObj.put("action","activate")
-
-        val jsonParser = JsonParser()
-        var gsonObject = jsonParser.parse(jsonObj.toString()) as JsonObject
-        val cardActivationAPI = apiService.cardActivationOmahaAPI( gsonObject)
-        cardActivationAPI.enqueue(object :Callback<PinChangeModel>{
-            override fun onResponse(
-                call: Call<PinChangeModel>,
-                response: Response<PinChangeModel>
-            ) {
-                if(response.code() == 200)
-                    activateCardDetails.value = response.body()
-                else
-                    errorMessageData.value =  Gson().fromJson(
-                        response.errorBody()!!.charStream(),
-                        MyErrorMessage::class.java
-                    )
-            }
-
-            override fun onFailure(call: Call<PinChangeModel>, t: Throwable) {
-                Log.i(TAG,"Throwable")
-                activateCardDetails.value = PinChangeModel(t)
-            }
-        })
-
-    }
-
-    fun isAccNumberValid(): LiveData<Boolean?>? {
-        return accNumberValidate
-    }
-
-    fun activateCardDetails(): LiveData<PinChangeModel>?{
-        return activateCardDetails
-    }
-    fun errorMessage(): LiveData<MyErrorMessage>?{
-        return errorMessageData
-    }
-
-    fun getStatusResponse(): LiveData<StatusResponse>?{
-        return statusResponse
-    }
-
 }

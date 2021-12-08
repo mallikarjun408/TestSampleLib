@@ -18,12 +18,20 @@
         <entry key="..\:/Work/COOP/workspace/TestSampleLib/dropin_cardactivationmodule/src/main/res/layout/cardlayout.xml" value="0.1358695652173913" />
         <entry key="..\:/Work/COOP/workspace/TestSampleLib/dropin_cardactivationmodule/src/main/res/layout/enterpin_fragment.xml" value="0.13179347826086957" />
         <entry key="..\:/Work/COOP/workspace/TestSampleLib/dropin_pinchangemodule/src/main/res/layout/activity_main.xml" value="0.1322463768115942" />
+        <entry key="..\:/Work/COOP/workspace/TestSampleLib/dropin_pinchangemodules/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1453125" />
         <entry key="..\:/Work/COOP/workspace/TestSampleLib/dropin_pinchangemodules/src/main/res/drawable/edtbackground.xml" value="0.1527777777777778" />
         <entry key="..\:/Work/COOP/workspace/TestSampleLib/dropin_pinchangemodules/src/main/res/drawable/enable_disable_btn.xml" value="0.1527777777777778" />
+        <entry key="..\:/Work/COOP/workspace/TestSampleLib/dropin_pinchangemodules/src/main/res/drawable/ic_launcher_background.xml" value="0.1453125" />
         <entry key="..\:/Work/COOP/workspace/TestSampleLib/dropin_pinchangemodules/src/main/res/drawable/roundedcorner_background.xml" value="0.1527777777777778" />
         <entry key="..\:/Work/COOP/workspace/TestSampleLib/dropin_pinchangemodules/src/main/res/drawable/spinner_bg.xml" value="0.109375" />
+        <entry key="..\:/Work/COOP/workspace/TestSampleLib/dropin_pinchangemodules/src/main/res/drawable/toolbar_background.xml" value="0.19583333333333333" />
+        <entry key="..\:/Work/COOP/workspace/TestSampleLib/dropin_pinchangemodules/src/main/res/font/font_regular.xml" value="0.20989583333333334" />
+        <entry key="..\:/Work/COOP/workspace/TestSampleLib/dropin_pinchangemodules/src/main/res/layout/create_newpin_fragment.xml" value="0.11639492753623189" />
         <entry key="..\:/Work/COOP/workspace/TestSampleLib/dropin_pinchangemodules/src/main/res/layout/dropdown_item.xml" value="0.12182971014492754" />
+        <entry key="..\:/Work/COOP/workspace/TestSampleLib/dropin_pinchangemodules/src/main/res/layout/enterpin_fragment.xml" value="0.12182971014492754" />
         <entry key="..\:/Work/COOP/workspace/TestSampleLib/dropin_pinchangemodules/src/main/res/layout/pinchange_activity.xml" value="0.1213768115942029" />
+        <entry key="..\:/Work/COOP/workspace/TestSampleLib/dropin_pinchangemodules/src/main/res/layout/pinchange_enterpin_fragment.xml" value="0.1" />
+        <entry key="..\:/Work/COOP/workspace/TestSampleLib/dropin_pinchangemodules/src/main/res/layout/pinchange_success_fragment.xml" value="0.12182971014492754" />
         <entry key="..\:/Work/COOP/workspace/TestSampleLib/dropin_pinchangemodules/src/main/res/layout/select_pinchange_fragment.xml" value="0.1213768115942029" />
         <entry key="..\:/Work/COOP/workspace/TestSampleLib/myapplication/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.19166666666666668" />
         <entry key="..\:/Work/COOP/workspace/TestSampleLib/myapplication/src/main/res/drawable/edtbackground.xml" value="0.19166666666666668" />
