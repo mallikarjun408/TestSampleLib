@@ -57,7 +57,7 @@ object  AppUtils {
     * algorithm : A256GCMKW
     * encryption : A256GCM
     *
-    * 256 bit symmetric key using randomKey generated at  generateWraperRandomKey()
+    * decode keyGenerated generated at generateWraperRandomKey() and use it as encrypt key for JWE string
     * */
 
    @RequiresApi(Build.VERSION_CODES.M)
